@@ -734,3 +734,412 @@ body {
 .btn-action.delete:hover {
     background-color: rgba(220, 53, 69, 0.1);
 }
+
+/* ========================================================== */
+/* 8. STYLE SPÉCIFIQUE - PAGE PROFIL */
+/* ========================================================== */
+.profile-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.profile-card {
+    padding: 0; /* Retirer le padding de base de .card pour laisser l'en-tête coller */
+    border-left: none; /* Retirer la bordure colorée pour ces cartes */
+    overflow: hidden;
+}
+
+.profile-content {
+    padding: 15px;
+}
+
+.profile-info-group {
+    margin-bottom: 15px;
+}
+
+.profile-info-group label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--grey-text);
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.profile-info-group p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+
+/* ========================================================== */
+/* 9. STYLE SPÉCIFIQUE - PAGE RAPPORTS */
+/* ========================================================== */
+.reports-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.reports-grid .full-width {
+    grid-column: 1 / -1; /* Permet à l'élément de s'étendre sur toute la largeur */
+}
+
+.report-panel .activity-content {
+    /* Utilise la classe existante pour centrer le contenu du graphique */
+    height: 300px; /* Hauteur par défaut des graphiques */
+}
+
+/* ========================================================== */
+/* 10. STYLE SPÉCIFIQUE - PAGE PARAMÈTRES */
+/* ========================================================== */
+.settings-grid {
+    display: grid;
+    grid-template-columns: 250px 1fr; /* Barre de navigation à gauche, contenu à droite */
+    gap: 25px;
+}
+
+.settings-nav-panel {
+    padding: 0;
+}
+
+.settings-nav-list {
+    list-style: none;
+    padding: 0;
+}
+
+.settings-nav-list li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: background-color 0.1s;
+}
+
+.settings-nav-list li a i {
+    margin-right: 10px;
+    color: var(--grey-text);
+}
+
+.settings-nav-list li:hover a {
+    background-color: #f1f1f1;
+}
+
+.settings-nav-list li.active a {
+    background-color: var(--bg-light); 
+    border-left: 3px solid var(--primary-blue);
+    color: var(--primary-blue);
+    font-weight: bold;
+}
+
+.settings-nav-list li.active a i {
+    color: var(--primary-blue);
+}
+
+.settings-section-card {
+    padding: 0;
+    border-left: none;
+    overflow: hidden;
+    margin-bottom: 25px; 
+}
+
+.settings-options {
+    padding: 15px;
+}
+
+/* ========================================================== */
+/* 11. RÉACTIVITÉ (RESPONSIVE DESIGN) */
+/* ========================================================== */
+
+/* --- A. Pour les Tablettes et Petits PC (Max 992px) --- */
+@media (max-width: 992px) {
+    
+    /* 1. Contenu principal prend moins de marge */
+    .main-content-area {
+        padding: 15px; /* Réduire le padding */
+    }
+
+    /* 2. Cartes Stats passent de 4 à 2 colonnes */
+    .stats-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    /* 3. Lignes de Panneaux (Graphiques et Listes) passent à 1 colonne */
+    .bottom-row-grid {
+        grid-template-columns: 1fr; /* 1 colonne complète */
+        gap: 20px;
+    }
+
+    /* 4. Grille des Rapports passent de 2 à 1 colonne */
+    .reports-grid {
+        grid-template-columns: 1fr; /* 1 colonne complète */
+        gap: 20px;
+    }
+
+    /* 5. Grille de Profil passe à 1 colonne */
+    .profile-layout-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* 6. Grille des Paramètres passe à 1 colonne */
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* --- B. Pour les Mobiles (Max 768px) --- */
+@media (max-width: 768px) {
+
+    /* 1. Masquer la barre latérale sur mobile */
+    .sidebar {
+        display: none;
+        /* Note: Vous devrez ajouter un bouton 'hamburger' dans le HTML pour l'afficher */
+    }
+
+    /* 2. Contenu principal utilise toute la largeur */
+    .app-container {
+        display: block; /* Supprime le flex pour que la main prenne 100% de la largeur */
+    }
+    
+    /* 3. Header principal devient plus compact */
+    .top-header {
+        flex-direction: column; /* Empiler les éléments verticalement */
+        align-items: flex-start; /* Alignés à gauche */
+        margin-bottom: 15px;
+    }
+
+    .header-right-actions {
+        margin-top: 10px;
+        width: 100%; /* Les boutons et la recherche prennent toute la largeur */
+        justify-content: space-between;
+    }
+    
+    .search-bar input {
+        width: 150px; /* Réduire la largeur de la recherche pour laisser de la place */
+    }
+
+    /* 4. Cartes Stats passent à 1 colonne */
+    .stats-cards-grid {
+        grid-template-columns: 1fr; /* 1 colonne complète */
+        gap: 15px;
+    }
+
+    /* 5. Cartes de Liens Rapides passent à 1 colonne */
+    .quick-links-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* 6. Le titre du dashboard se compacte */
+    .dashboard-title {
+        font-size: 1.1rem;
+    }
+    
+    .title-icon {
+        font-size: 1.1rem;
+    }
+
+    /* 7. Le menu de profil se gère différemment pour ne pas déborder */
+    .user-profile-menu {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* ========================================================== */
+/* 12. FONCTIONNALITÉS PAGE USERS : Recherche + CRUD          */
+/* ========================================================== */
+
+/* ✅ 1. Barre de recherche avancée (Users) */
+.user-search-bar {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.user-search-bar input {
+    padding: 8px 12px;
+    width: 260px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.user-search-bar input:focus {
+    border-color: var(--highlight-blue);
+    box-shadow: 0 0 4px rgba(13, 110, 253, 0.3);
+}
+
+/* ✅ 2. Boutons CRUD dans le tableau */
+.btn-action {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    transition: background-color 0.1s;
+}
+
+.btn-action.edit {
+    color: var(--highlight-blue);
+}
+.btn-action.edit:hover {
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+.btn-action.delete {
+    color: var(--card-red-text);
+}
+.btn-action.delete:hover {
+    background-color: rgba(220, 53, 69, 0.1);
+}
+
+
+/* ========================================================== */
+/* ✅ 3. MODALE : Ajouter / Modifier un utilisateur           */
+/* ========================================================== */
+
+.modal-overlay {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.45);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-box {
+    width: 420px;
+    background-color: #fff;
+    padding: 20px 25px;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    animation: modalPop 0.25s ease-out;
+}
+
+@keyframes modalPop {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.modal-form .form-group {
+    margin-bottom: 15px;
+}
+
+.modal-form input, 
+.modal-form select {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #f8f9fa;
+    font-size: 0.9rem;
+}
+
+.modal-form input:focus,
+.modal-form select:focus {
+    border-color: var(--highlight-blue);
+    background: #fff;
+}
+
+/* ✅ Boutons de la modale */
+.modal-actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-cancel {
+    padding: 8px 15px;
+    background: #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #333;
+    border: none;
+}
+
+.btn-submit {
+    padding: 8px 15px;
+    background: var(--highlight-blue);
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+}
+
+
+/* ========================================================== */
+/* ✅ 4. MODALE DE SUPPRESSION                                */
+/* ========================================================== */
+
+.delete-modal .modal-box {
+    width: 350px;
+    text-align: center;
+}
+
+.delete-modal p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.btn-delete-confirm {
+    background: var(--card-red-text);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-delete-confirm:hover {
+    background: #c82333;
+}
+
+
+/* ========================================================== */
+/* ✅ 5. TOASTS (Messages de succès et d'erreur)              */
+/* ========================================================== */
+
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1200;
+}
+
+.toast-message {
+    padding: 12px 18px;
+    background: var(--highlight-blue);
+    color: #fff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    animation: toastSlide 0.3s ease-out;
+}
+
+.toast-message.error {
+    background: var(--card-red-text);
+}
+
+@keyframes toastSlide {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}

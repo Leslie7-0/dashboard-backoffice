@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paramètres du Système - Ges_Users</title>
+    <title>Mon Profil - Ges_Users</title>
     <link rel="stylesheet" href="css/style.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -21,9 +21,9 @@
                     <li><a href="groupe.html"><i class="fas fa-user-friends"></i> Groupes</a></li>
                     <li><a href="logs.html"><i class="fas fa-calendar-alt"></i> Logs d'Audit</a></li>
                     <li><a href="roles.html"><i class="fas fa-tasks"></i> Gestion des Rôles</a></li>
-                    <!--<li class="active"><a href="settings.html"><i class="fas fa-cogs"></i> Paramètres</a></li>-->
+                    <li><a href="permissions.html"><i class="fas fa-lock"></i> Permissions</a></li>
                     <li><a href="rapports.html"><i class="fas fa-flask"></i> Rapports</a></li>
-                    <li><a href="profil.html"><i class="fas fa-user-circle"></i> Profil</a></li>
+                    <li class="active"><a href="profil.html"><i class="fas fa-user-circle"></i> Profil</a></li>
                     <li class="sidebar-disconnect"><a href="login.html"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
                 </ul>
             </nav>
@@ -32,7 +32,7 @@
         <main class="main-content-area">
             <header class="top-header">
                 <div class="header-left">
-                    <h2 class="dashboard-title"><i class="fas fa-cogs title-icon"></i> Paramètres du Système</h2>
+                    <h2 class="dashboard-title"><i class="fas fa-user title-icon"></i> Mon Profil</h2>
                 </div>
                 
                 <div class="header-right-actions">
@@ -47,46 +47,47 @@
                 </div>
             </header>
 
-            <div class="settings-grid">
+            <div class="profile-layout-grid">
                 
-                <div class="panel settings-nav-panel">
-                    <div class="panel-header dark-green-header">
-                        <h3><i class="fas fa-bars"></i> Navigation</h3>
+                <div class="card profile-card">
+                    <div class="panel-header blue-header" style="color: white;">
+                        <h3><i class="fas fa-info-circle"></i> Informations Générales</h3>
                     </div>
-                    <ul class="settings-nav-list">
-                        <li class="active"><a href="#general"><i class="fas fa-sliders-h"></i> Général</a></li>
-                        <li><a href="#security"><i class="fas fa-lock"></i> Sécurité et Auth.</a></li>
-                        <li><a href="#notifications"><i class="fas fa-bell"></i> Notifications</a></li>
-                        <li><a href="#billing"><i class="fas fa-file-invoice-dollar"></i> Facturation</a></li>
-                    </ul>
+                    <div class="card-content profile-content">
+                        <div class="profile-info-group">
+                            <label>Nom Complet :</label>
+                            <p>Admin Ma Démo</p>
+                        </div>
+                        <div class="profile-info-group">
+                            <label>Rôle :</label>
+                            <p>Administrateur Système</p>
+                        </div>
+                        <div class="profile-info-group">
+                            <label>Email :</label>
+                            <p>admin@demoproject.com</p>
+                        </div>
+                        <button class="btn-add-user" style="background-color: var(--primary-blue); margin-top: 15px;">
+                            <i class="fas fa-edit"></i> Modifier les Informations
+                        </button>
+                    </div>
                 </div>
-
-                <div class="settings-content-area">
-                    <div id="general" class="card settings-section-card">
-                        <div class="panel-header blue-header">
-                            <h3>Général</h3>
-                        </div>
-                        <div class="card-content settings-options">
-                            <p>Options générales du système (ex: fuseau horaire, langue).</p>
-                        </div>
+                
+                <div class="card profile-card">
+                    <div class="panel-header dark-green-header" style="color: white;">
+                        <h3><i class="fas fa-shield-alt"></i> Sécurité</h3>
                     </div>
-                    
-                    <div id="security" class="card settings-section-card">
-                        <div class="panel-header yellow-header" style="color: var(--text-dark);">
-                            <h3>Sécurité et Authentification</h3>
+                    <div class="card-content profile-content">
+                        <div class="profile-info-group">
+                            <label>Dernière Connexion :</label>
+                            <p>10/11/2025 à 15:30 (France)</p>
                         </div>
-                        <div class="card-content settings-options">
-                            <p>Gestion de l'authentification à deux facteurs et des politiques de mot de passe.</p>
+                         <div class="profile-info-group">
+                            <label>Statut 2FA :</label>
+                            <p class="red-text">Désactivé</p>
                         </div>
-                    </div>
-
-                    <div id="notifications" class="card settings-section-card">
-                        <div class="panel-header light-blue-header">
-                            <h3>Notifications</h3>
-                        </div>
-                        <div class="card-content settings-options">
-                            <p>Configuration des alertes et des notifications par e-mail ou in-app.</p>
-                        </div>
+                        <button class="btn-add-user" style="background-color: var(--card-red-text); margin-top: 15px;">
+                            <i class="fas fa-lock"></i> Changer le Mot de Passe
+                        </button>
                     </div>
                 </div>
             </div>
