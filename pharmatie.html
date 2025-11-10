@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hôpital Manager Pro</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <!-- Overlay pour mobile -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+    
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <div class="text-center p-3 border-bottom border-secondary">
+            <h4 class="text-white mb-0">
+                <i class="fas fa-hospital me-2"></i>Ges-Hosp
+            </h4>
+        </div>
+        <nav class="nav flex-column">
+            <a class="nav-link" href="dashboard.html" onclick="showSection('dashboard')">
+                <i class="fas fa-tachometer-alt me-2"></i>Tableau de Bord
+            </a>
+            <a class="nav-link" href="gestionpatient.html" onclick="showSection('patients')">
+                <i class="fas fa-user-injured me-2"></i>Gestion des Patients
+            </a>
+            <a class="nav-link" href="personelmedical.html" onclick="showSection('staff')">
+                <i class="fas fa-users me-2"></i>Personnel Médical
+            </a>
+            <a class="nav-link" href="rendezvous.html" onclick="showSection('appointments')">
+                <i class="fas fa-calendar-alt me-2"></i>Rendez-vous
+            </a>
+            <a class="nav-link" href="lit.html" onclick="showSection('beds')">
+                <i class="fas fa-bed me-2"></i>Gestion des Lits
+            </a>
+            <a class="nav-link" href="pharmatie.html" onclick="showSection('pharmacy')">
+                <i class="fas fa-pills me-2"></i>Pharmacie
+            </a>
+            <a class="nav-link" href="urgence.html" onclick="showSection('emergency')">
+                <i class="fas fa-ambulance me-2"></i>Urgences
+            </a>
+            <a class="nav-link" href="laboratoire.html" onclick="showSection('lab')">
+                <i class="fas fa-flask me-2"></i>Laboratoire
+            </a>
+            <a class="nav-link" href="facturation.html" onclick="showSection('billing')">
+                <i class="fas fa-file-invoice me-2"></i>Facturation
+            </a>
+            <div class="mt-auto">
+                <a class="nav-link" href="profil.html" onclick="showSection('profile')">
+                    <i class="fas fa-user me-2"></i>Mon Profil
+                </a>
+                <a class="nav-link text-danger" href="login.html" onclick="logout()">
+                    <i class="fas fa-sign-out-alt me-2"></i>Déconnexion
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Top Navigation -->
+    <div class="top-nav" id="topNav">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <button class="menu-toggle me-3" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                   
+                </div>
+                <div class="d-flex align-items-center">
+                    <span class="me-3">
+                        <i class="fas fa-user-md me-1"></i> 
+                        <span id="userName">Dr. Dupont</span>
+                    </span>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="showSection('profile')">Profil</a></li>
+                            <li><a class="dropdown-item" href="#">Paramètres</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="index.html" onclick="logout()">Déconnexion</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gestion de la Pharmacie -->
+    <div class=" main-content" id="pharmacy">
+        <div class="content-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2><i class="fas fa-pills me-2"></i>Gestion de la Pharmacie</h2>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-plus me-1"></i> Nouveau Médicament
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-warning text-dark">
+                                <h5 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i>Alertes Stock</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="alert alert-warning medication-low">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong>Paracétamol 500mg</strong>
+                                            <p class="mb-0">Stock faible: 45 unités</p>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-warning">Commander</button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger medication-critical">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong>Amoxicilline 1g</strong>
+                                            <p class="mb-0">Stock critique: 12 unités</p>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-danger">Commander</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0"><i class="fas fa-capsules me-2"></i>Médicaments les Plus Utilisés</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                                        Paracétamol 500mg
+                                        <span class="badge bg-primary rounded-pill">156</span>
+                                    </div>
+                                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                                        Ibuprofène 400mg
+                                        <span class="badge bg-primary rounded-pill">128</span>
+                                    </div>
+                                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                                        Amoxicilline 1g
+                                        <span class="badge bg-primary rounded-pill">95</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-info text-white">
+                                <h5 class="mb-0"><i class="fas fa-list me-2"></i>Inventaire des Médicaments</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Médicament</th>
+                                                <th>Dosage</th>
+                                                <th>Stock</th>
+                                                <th>Seuil Alerte</th>
+                                                <th>Statut</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Paracétamol</td>
+                                                <td>500mg</td>
+                                                <td>45</td>
+                                                <td>50</td>
+                                                <td><span class="badge bg-warning">Stock faible</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Amoxicilline</td>
+                                                <td>1g</td>
+                                                <td>12</td>
+                                                <td>20</td>
+                                                <td><span class="badge bg-danger">Stock critique</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ibuprofène</td>
+                                                <td>400mg</td>
+                                                <td>156</td>
+                                                <td>30</td>
+                                                <td><span class="badge bg-success">Stock normal</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+       <script>
+        // Variables globales
+        let currentUser = null;
+        let currentRole = null;
+        let sidebarOpen = false;
+
+        // Titres des pages
+        const pageTitles = {
+            'dashboard': 'Tableau de Bord',
+            'patients': 'Gestion des Patients',
+            'staff': 'Personnel Médical',
+            'appointments': 'Rendez-vous',
+            'beds': 'Gestion des Lits',
+            'pharmacy': 'Pharmacie',
+            'emergency': 'Urgences',
+            'lab': 'Laboratoire',
+            'billing': 'Facturation',
+            'profile': 'Mon Profil'
+        };
+
+        // Fonction pour afficher une section
+        function showSection(sectionId) {
+            $('.page-section').removeClass('active');
+            $('#' + sectionId).addClass('active');
+            
+            // Mettre à jour le titre de la page
+            $('#pageTitle').text(pageTitles[sectionId] || 'Hôpital Manager Pro');
+            
+            if(sectionId !== 'login-page') {
+                $('#topNav').addClass('active');
+                $('.main-content').addClass('with-sidebar');
+                
+                // Fermer la sidebar sur mobile après sélection
+                if (window.innerWidth <= 1200) {
+                    closeSidebar();
+                }
+            } else {
+                $('#topNav').removeClass('active');
+                $('.main-content').removeClass('with-sidebar');
+                closeSidebar();
+            }
+        }
+
+        // Fonction pour basculer la sidebar
+        function toggleSidebar() {
+            if (sidebarOpen) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        }
+
+        function openSidebar() {
+            $('#sidebar').addClass('active');
+            $('#overlay').addClass('active');
+            sidebarOpen = true;
+        }
+
+        function closeSidebar() {
+            $('#sidebar').removeClass('active');
+            $('#overlay').removeClass('active');
+            sidebarOpen = false;
+        }
+
+        // Fonction de connexion
+        function login() {
+            const role = $('#roleSelect').val();
+            const username = $('#username').val();
+            const password = $('#password').val();
+            
+            if (!role || !username || !password) {
+                alert('Veuillez remplir tous les champs');
+                return;
+            }
+            
+            currentRole = role;
+            currentUser = { 
+                name: role === 'doctor' ? 'Dr. Martin' : 
+                      role === 'nurse' ? 'Inf. Dubois' :
+                      role === 'admin' ? 'M. Admin' : 'Patient',
+                role: role 
+            };
+            
+            $('#userName').text(currentUser.name);
+            showSection('dashboard');
+        }
+
+        // Connexion rapide
+        function quickLogin(role) {
+            currentRole = role;
+            currentUser = { 
+                name: role === 'doctor' ? 'Dr. Martin' : 
+                      role === 'nurse' ? 'Inf. Dubois' :
+                      role === 'admin' ? 'M. Admin' : 'Patient',
+                role: role 
+            };
+            
+            $('#userName').text(currentUser.name);
+            showSection('dashboard');
+        }
+
+        // Fonction de déconnexion
+        function logout() {
+            currentUser = null;
+            currentRole = null;
+            showSection('login-page');
+        }
+
+        // Fonctions pour les boutons
+        function setDashboardView(view) {
+            alert('Affichage ' + (view === 'today' ? "d'aujourd'hui" : 'de la semaine'));
+        }
+
+        function newPatient() {
+            alert('Création d\'un nouveau patient');
+        }
+
+        function viewPatientDetails(patientId) {
+            alert('Détails du patient #' + patientId);
+        }
+
+        function editPatient(patientId) {
+            alert('Modification du patient #' + patientId);
+        }
+
+        function addConsultation(patientId) {
+            alert('Ajout d\'une consultation pour le patient #' + patientId);
+        }
+
+        function newPrescription() {
+            alert('Nouvelle prescription');
+        }
+
+        function searchPatients() {
+            const term = $('#patientSearch').val();
+            alert('Recherche: ' + term);
+        }
+
+        function filterPatients() {
+            const service = $('#serviceFilter').val();
+            alert('Filtre: ' + service);
+        }
+
+        function newEmergencyPatient() {
+            alert('Nouveau patient aux urgences');
+        }
+
+        function takeCharge(patientId) {
+            alert('Prise en charge du patient #' + patientId);
+        }
+
+        // Gestion du redimensionnement de la fenêtre
+        function handleResize() {
+            if (window.innerWidth > 1200) {
+                $('.main-content').addClass('with-sidebar');
+                $('#sidebar').addClass('active');
+            } else {
+                $('.main-content').removeClass('with-sidebar');
+                closeSidebar();
+            }
+        }
+
+        // Initialisation
+        $(document).ready(function() {
+            showSection('login-page');
+            
+            // Gestion du redimensionnement
+            $(window).resize(handleResize);
+            handleResize();
+            
+            // Animation des cartes au survol
+            $('.card-hover').hover(
+                function() {
+                    $(this).css('transform', 'translateY(-5px)');
+                },
+                function() {
+                    $(this).css('transform', 'translateY(0)');
+                }
+            );
+
+            // Recherche avec Entrée
+            $('#patientSearch').on('keypress', function(e) {
+                if (e.which === 13) {
+                    searchPatients();
+                }
+            });
+
+            // Fermer la sidebar en cliquant à l'extérieur sur mobile
+            $('#overlay').click(function() {
+                closeSidebar();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hôpital Manager Pro</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <!-- Overlay pour mobile -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+    
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <div class="text-center p-3 border-bottom border-secondary">
+            <h4 class="text-white mb-0">
+                <i class="fas fa-hospital me-2"></i>Ges-Hosp
+            </h4>
+        </div>
+        <nav class="nav flex-column">
+            <a class="nav-link" href="dashboard.html" onclick="showSection('dashboard')">
+                <i class="fas fa-tachometer-alt me-2"></i>Tableau de Bord
+            </a>
+            <a class="nav-link" href="gestionpatient.html" onclick="showSection('patients')">
+                <i class="fas fa-user-injured me-2"></i>Gestion des Patients
+            </a>
+            <a class="nav-link" href="personelmedical.html" onclick="showSection('staff')">
+                <i class="fas fa-users me-2"></i>Personnel Médical
+            </a>
+            <a class="nav-link" href="rendezvous.html" onclick="showSection('appointments')">
+                <i class="fas fa-calendar-alt me-2"></i>Rendez-vous
+            </a>
+            <a class="nav-link" href="lit.html" onclick="showSection('beds')">
+                <i class="fas fa-bed me-2"></i>Gestion des Lits
+            </a>
+            <a class="nav-link" href="pharmatie.html" onclick="showSection('pharmacy')">
+                <i class="fas fa-pills me-2"></i>Pharmacie
+            </a>
+            <a class="nav-link" href="urgence.html" onclick="showSection('emergency')">
+                <i class="fas fa-ambulance me-2"></i>Urgences
+            </a>
+            <a class="nav-link" href="laboratoire.html" onclick="showSection('lab')">
+                <i class="fas fa-flask me-2"></i>Laboratoire
+            </a>
+            <a class="nav-link" href="facturation.html" onclick="showSection('billing')">
+                <i class="fas fa-file-invoice me-2"></i>Facturation
+            </a>
+            <div class="mt-auto">
+                <a class="nav-link" href="profil.html" onclick="showSection('profile')">
+                    <i class="fas fa-user me-2"></i>Mon Profil
+                </a>
+                <a class="nav-link text-danger" href="login.html" onclick="logout()">
+                    <i class="fas fa-sign-out-alt me-2"></i>Déconnexion
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Top Navigation -->
+    <div class="top-nav" id="topNav">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <button class="menu-toggle me-3" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    
+                </div>
+                <div class="d-flex align-items-center">
+                    <span class="me-3">
+                        <i class="fas fa-user-md me-1"></i> 
+                        <span id="userName">Dr. Dupont</span>
+                    </span>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="showSection('profile')">Profil</a></li>
+                            <li><a class="dropdown-item" href="#">Paramètres</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="login.html" onclick="logout()">Déconnexion</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <!-- Gestion des Lits -->
+    <div class=" main-content" id="beds">
+        <div class="content-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="mb-4"><i class="fas fa-bed me-2"></i>Gestion des Lits d'Hospitalisation</h2>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-3">
+                        <div class="card bg-primary text-white">
+                            <div class="card-body text-center">
+                                <h3>156</h3>
+                                <p>Lits Totaux</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-success text-white">
+                            <div class="card-body text-center">
+                                <h3>128</h3>
+                                <p>Lits Occupés</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-info text-white">
+                            <div class="card-body text-center">
+                                <h3>12</h3>
+                                <p>Lits Disponibles</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-warning text-white">
+                            <div class="card-body text-center">
+                                <h3>16</h3>
+                                <p>Lits en Nettoyage</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-dark text-white">
+                                <h5 class="mb-0"><i class="fas fa-map me-2"></i>Répartition par Service</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Service</th>
+                                                <th>Lits Total</th>
+                                                <th>Occupés</th>
+                                                <th>Disponibles</th>
+                                                <th>Taux Occupation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Cardiologie</td>
+                                                <td>35</td>
+                                                <td>32</td>
+                                                <td>3</td>
+                                                <td>
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-success" style="width: 91%">91%</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Chirurgie</td>
+                                                <td>42</td>
+                                                <td>38</td>
+                                                <td>4</td>
+                                                <td>
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-warning" style="width: 90%">90%</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Pédiatrie</td>
+                                                <td>28</td>
+                                                <td>22</td>
+                                                <td>6</td>
+                                                <td>
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-info" style="width: 79%">79%</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+       <script>
+        // Variables globales
+        let currentUser = null;
+        let currentRole = null;
+        let sidebarOpen = false;
+
+        // Titres des pages
+        const pageTitles = {
+            'dashboard': 'Tableau de Bord',
+            'patients': 'Gestion des Patients',
+            'staff': 'Personnel Médical',
+            'appointments': 'Rendez-vous',
+            'beds': 'Gestion des Lits',
+            'pharmacy': 'Pharmacie',
+            'emergency': 'Urgences',
+            'lab': 'Laboratoire',
+            'billing': 'Facturation',
+            'profile': 'Mon Profil'
+        };
+
+        // Fonction pour afficher une section
+        function showSection(sectionId) {
+            $('.page-section').removeClass('active');
+            $('#' + sectionId).addClass('active');
+            
+            // Mettre à jour le titre de la page
+            $('#pageTitle').text(pageTitles[sectionId] || 'Hôpital Manager Pro');
+            
+            if(sectionId !== 'login-page') {
+                $('#topNav').addClass('active');
+                $('.main-content').addClass('with-sidebar');
+                
+                // Fermer la sidebar sur mobile après sélection
+                if (window.innerWidth <= 1200) {
+                    closeSidebar();
+                }
+            } else {
+                $('#topNav').removeClass('active');
+                $('.main-content').removeClass('with-sidebar');
+                closeSidebar();
+            }
+        }
+
+        // Fonction pour basculer la sidebar
+        function toggleSidebar() {
+            if (sidebarOpen) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        }
+
+        function openSidebar() {
+            $('#sidebar').addClass('active');
+            $('#overlay').addClass('active');
+            sidebarOpen = true;
+        }
+
+        function closeSidebar() {
+            $('#sidebar').removeClass('active');
+            $('#overlay').removeClass('active');
+            sidebarOpen = false;
+        }
+
+        // Fonction de connexion
+        function login() {
+            const role = $('#roleSelect').val();
+            const username = $('#username').val();
+            const password = $('#password').val();
+            
+            if (!role || !username || !password) {
+                alert('Veuillez remplir tous les champs');
+                return;
+            }
+            
+            currentRole = role;
+            currentUser = { 
+                name: role === 'doctor' ? 'Dr. Martin' : 
+                      role === 'nurse' ? 'Inf. Dubois' :
+                      role === 'admin' ? 'M. Admin' : 'Patient',
+                role: role 
+            };
+            
+            $('#userName').text(currentUser.name);
+            showSection('dashboard');
+        }
+
+        // Connexion rapide
+        function quickLogin(role) {
+            currentRole = role;
+            currentUser = { 
+                name: role === 'doctor' ? 'Dr. Martin' : 
+                      role === 'nurse' ? 'Inf. Dubois' :
+                      role === 'admin' ? 'M. Admin' : 'Patient',
+                role: role 
+            };
+            
+            $('#userName').text(currentUser.name);
+            showSection('dashboard');
+        }
+
+        // Fonction de déconnexion
+        function logout() {
+            currentUser = null;
+            currentRole = null;
+            showSection('login-page');
+        }
+
+        // Fonctions pour les boutons
+        function setDashboardView(view) {
+            alert('Affichage ' + (view === 'today' ? "d'aujourd'hui" : 'de la semaine'));
+        }
+
+        function newPatient() {
+            alert('Création d\'un nouveau patient');
+        }
+
+        function viewPatientDetails(patientId) {
+            alert('Détails du patient #' + patientId);
+        }
+
+        function editPatient(patientId) {
+            alert('Modification du patient #' + patientId);
+        }
+
+        function addConsultation(patientId) {
+            alert('Ajout d\'une consultation pour le patient #' + patientId);
+        }
+
+        function newPrescription() {
+            alert('Nouvelle prescription');
+        }
+
+        function searchPatients() {
+            const term = $('#patientSearch').val();
+            alert('Recherche: ' + term);
+        }
+
+        function filterPatients() {
+            const service = $('#serviceFilter').val();
+            alert('Filtre: ' + service);
+        }
+
+        function newEmergencyPatient() {
+            alert('Nouveau patient aux urgences');
+        }
+
+        function takeCharge(patientId) {
+            alert('Prise en charge du patient #' + patientId);
+        }
+
+        // Gestion du redimensionnement de la fenêtre
+        function handleResize() {
+            if (window.innerWidth > 1200) {
+                $('.main-content').addClass('with-sidebar');
+                $('#sidebar').addClass('active');
+            } else {
+                $('.main-content').removeClass('with-sidebar');
+                closeSidebar();
+            }
+        }
+
+        // Initialisation
+        $(document).ready(function() {
+            showSection('login-page');
+            
+            // Gestion du redimensionnement
+            $(window).resize(handleResize);
+            handleResize();
+            
+            // Animation des cartes au survol
+            $('.card-hover').hover(
+                function() {
+                    $(this).css('transform', 'translateY(-5px)');
+                },
+                function() {
+                    $(this).css('transform', 'translateY(0)');
+                }
+            );
+
+            // Recherche avec Entrée
+            $('#patientSearch').on('keypress', function(e) {
+                if (e.which === 13) {
+                    searchPatients();
+                }
+            });
+
+            // Fermer la sidebar en cliquant à l'extérieur sur mobile
+            $('#overlay').click(function() {
+                closeSidebar();
+            });
+        });
+    </script>
+</body>
+</html>
