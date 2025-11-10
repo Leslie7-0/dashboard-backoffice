@@ -1,110 +1,131 @@
 Projet en html, css, Javascript.
 
-# 📌 Dashboard Back-Office – Gestion des Utilisateurs
+# 📌 Dashboard Back-Office – Interface de Gestion Médicale
 
-Ce projet est un **tableau de bord web** permettant de gérer des utilisateurs dans un système interne.
-Il s'agit d’un faux back-office moderne et intuitif, développé dans le cadre d’un travail académique afin d’illustrer la conception d’interfaces administratives entièrement en **HTML, CSS et JavaScript**.
+Projet en **HTML, CSS, JavaScript, Bootstrap**
 
-L’objectif principal est de fournir une interface claire permettant d’afficher rapidement l’état du système, les statistiques, les nouvelles activités, ainsi qu’un ensemble d’outils d’administration.
+Ce projet est un **tableau de bord médical complet**, destiné à simuler la gestion interne d’un hôpital ou centre de santé.
+Il s’agit d’un **projet académique**, réalisé pour illustrer la création d’une interface moderne, intuitive et responsive utilisant exclusivement **HTML, CSS, JavaScript et Bootstrap**.
+
+L’interface permet une visualisation rapide de l’activité médicale du jour, l’accès aux différentes sections (patients, personnel, urgences, laboratoires, etc.), ainsi que la gestion des éléments courants du système hospitalier.
 
 ---
 
 ## 🎯 Objectifs du projet
 
-* Concevoir une interface d’administration fonctionnelle et responsive.
-* Afficher les principales statistiques liées aux utilisateurs (totaux, actifs, alertes…).
-* Permettre une visualisation rapide de l’activité via des cartes et un graphique dynamique.
-* Organiser les pages et la navigation comme s'il s'agissait d’un vrai back-office :
-  tableau de bord, gestion des utilisateurs, profil, paramètres…
-* Illustrer l’usage de JavaScript pour les interactions, menus, et graphiques.
+* Concevoir une interface de gestion médicale claire et efficace.
+* Présenter les informations essentielles via un tableau de bord dynamique.
+* Centraliser la navigation : patients, personnel, urgences, lits, pharmacie…
+* Permettre une consultation rapide des alertes, statistiques et activités.
+* Illustrer l’usage de JavaScript pour les interactions (sidebar, menus, sections…).
+* Développer un système entièrement **front-end**, facile à personnaliser.
 
 ---
 
 ## 🧩 Fonctionnalités
 
-* **Dashboard complet** avec cartes statistiques colorées.
-* **Liste des nouveaux utilisateurs** et activités récentes.
-* **Graphique d’activité mensuelle** (via Chart.js).
-* **Section des alertes importantes**.
-* **Accès rapides** vers les actions les plus courantes.
-* **Navigation latérale** (sidebar) simple et organisée.
-* **Menu utilisateur** avec profil, paramètres et déconnexion.
+* **Dashboard complet** avec cartes statistiques (patients du jour, urgences, consultations, lits…)
+* **Liste des patients à voir aujourd’hui**
+* **Section des alertes urgentes** (résultats critiques, allergies…)
+* **Aperçu d’activité hospitalière** (patients du mois, occupation, durée séjour)
+* **Sidebar dynamique** pour accéder aux modules :
 
-Ces éléments sont construits dans un style visuel structuré, épuré, avec un code soigné et facilement modifiable.
+  * Gestion des patients
+  * Personnel médical
+  * Rendez-vous
+  * Gestion des lits
+  * Pharmacie
+  * Urgences
+  * Laboratoire
+  * Facturation
+* **Accès rapides** (dossier patient, prescriptions, rendez-vous…)
+* **Espace Profil + menu utilisateur**
+* Compatibilité mobile (sidebar responsive + overlay automatique)
+
+L’ensemble est conçu dans un style visuel **professionnel, épuré et ergonomique**, facile à maintenir et étendre.
 
 ---
 
 ## 🛠️ Technologies utilisées
 
 * **HTML5** – Structure des pages
-* **CSS3** – Mise en forme et styles du tableau de bord
-* **JavaScript** – Interactions, logique et graphique
-* **Chart.js** – Visualisation des données
-* **Vs_Code** - IDE de developpement
+* **CSS3** – Style général et mise en forme
+* **Bootstrap 5.3** – Grille, responsivité, composants
+* **JavaScript (Vanilla)** – Logique, gestion des vues, interactions
+* **jQuery** – Manipulation simplifiée du DOM
+* **Font Awesome** – Icônes modernes
+* **VS Code** – Environnement de développement
 
-Aucun framework ou outil externe lourd n'est utilisé.
+Aucun backend ou framework lourd n’est nécessaire.
 
 ---
 
 ## 📁 Structure du projet
 
 ```
-dashboard-backoffice/
+hopital-manager-pro/
 │
 ├── index.html
-├── users.html
-├── login.html
-├── logs.html
-├── groupe.html
-├── rapports.html
-├── settings.html
+├── dashboard.html
+├── gestionpatient.html
+├── personelmedical.html
+├── rendezvous.html
+├── lit.html
+├── urgence.html
+├── pharmacie.html
+├── laboratoire.html
+├── facturation.html
 ├── profil.html
-├── permissions.html
-├── roles.html
+
 │
-├── css/
-│   └── style.css  
-│
-└── js/
-   ├── main.js
+└── css/
+  └── style.css
 ```
 
 ---
 
 ## 🚀 Lancer le projet
 
-Aucune installation n’est nécessaire.
+Aucune installation n’est requise.
 
 1. **Cloner le repository :**
 
-   ```
+   ```bash
    git clone https://github.com/Leslie7-0/dashboard-backoffice.git
    ```
-2. **Ouvrir le fichier :**
 
-   ```
-   index.html soit via Live Server dans VS Code , soit directement dans un navigateur. 
-   ```
-3. Le back-office fonctionne immédiatement **en local**, sans serveur pas besoin de Node, Vite, React, PHP, etc..
+2. **Ouvrir le projet :**
+
+   * soit via **Live Server** dans VS Code
+   * soit en ouvrant simplement **index.html** dans un navigateur
+
+Aucune configuration supplémentaire n’est nécessaire :
+✅ Pas de Node
+✅ Pas de PHP
+✅ Pas de React
+✅ Pas de serveur
+
+Tout fonctionne directement **en local**.
 
 ---
 
 ## ✨ Personnalisation
 
-Les couleurs, textes, sections et données peuvent être modifiés facilement :
+Vous pouvez modifier facilement :
 
-* Styles → `css/style.css`
-* Données d’affichage → `js/main.js`
-* Graphique → `charts.js`
+* Les couleurs et styles → `css/style.css`
+* Les interactions et données simulées → `js/main.js`
+* Les icônes → via Font Awesome
+* Les sections → fichiers HTML individuels
 
 ---
 
-## 👤 Auteur
+## 👤 Auteurs
 
 Projet réalisé par :
-- **Mafo kakeu devina Leslie**
-- **Nzali herman vanel**
-dans un cadre d’apprentissage et de démonstration de la construction d’interfaces web administratives.
 
----
+* **Mafo Kakeu Devina Leslie**
+* **Nzali Herman Vanel**
+
+Dans le cadre d’un apprentissage en développement web et d’une démonstration de la construction d’interfaces administratives professionnelles.
 
