@@ -15,7 +15,6 @@
     
 </head>
 <body>
-
     <!-- Overlay pour mobile -->
     <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
     
@@ -23,7 +22,7 @@
     <div class="sidebar" id="sidebar">
         <div class="text-center p-3 border-bottom border-secondary">
             <h4 class="text-white mb-0">
-                <i class="fas fa-hospital me-2"></i>Ges_Hosp              
+                <i class="fas fa-hospital me-2"></i>Ges-Hosp
             </h4>
         </div>
         <nav class="nav flex-column">
@@ -73,7 +72,7 @@
                     <button class="menu-toggle me-3" onclick="toggleSidebar()">
                         <i class="fas fa-bars"></i>
                     </button>
-                    
+                   
                 </div>
                 <div class="d-flex align-items-center">
                     <span class="me-3">
@@ -96,219 +95,89 @@
         </div>
     </div>
 
-    
-    <!-- Dashboard -->
-    <div class=" main-content" id="dashboard">
+    <!-- Gestion des Rendez-vous -->
+    <div class=" main-content" id="appointments">
         <div class="content-area">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h2><i class="fas fa-tachometer-alt me-2"></i>Tableau de Bord Médical</h2>
-                            <div class="btn-group">
-                                <button class="btn btn-outline-primary btn-sm" onclick="setDashboardView('today')">
-                                    <i class="fas fa-calendar-day"></i> Aujourd'hui
-                                </button>
-                                <button class="btn btn-outline-secondary btn-sm" onclick="setDashboardView('week')">
-                                    <i class="fas fa-calendar-week"></i> Semaine
-                                </button>
-                            </div>
+                            <h2><i class="fas fa-calendar-alt me-2"></i>Gestion des Rendez-vous</h2>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-plus me-1"></i> Nouveau Rendez-vous
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="row g-3 mb-4">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="card card-hover border-primary stat-card" onclick="showSection('patients')">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <h6 class="card-title text-muted">PATIENTS DU JOUR</h6>
-                                        <h3 class="text-primary">24</h3>
-                                    </div>
-                                    <div class="align-self-center">
-                                        <i class="fas fa-users fa-2x text-primary"></i>
-                                    </div>
-                                </div>
-                                <div class="mt-2">
-                                    <span class="badge bg-success">+5 nouveaux</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-3 col-sm-6">
-                        <div class="card card-hover border-warning stat-card" onclick="showSection('emergency')">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <h6 class="card-title text-muted">URGENCES</h6>
-                                        <h3 class="text-warning">8</h3>
-                                    </div>
-                                    <div class="align-self-center">
-                                        <i class="fas fa-ambulance fa-2x text-warning"></i>
-                                    </div>
-                                </div>
-                                <div class="mt-2">
-                                    <span class="badge bg-danger">2 critiques</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-3 col-sm-6">
-                        <div class="card card-hover border-success stat-card" onclick="showSection('appointments')">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <h6 class="card-title text-muted">CONSULTATIONS</h6>
-                                        <h3 class="text-success">42</h3>
-                                    </div>
-                                    <div class="align-self-center">
-                                        <i class="fas fa-stethoscope fa-2x text-success"></i>
-                                    </div>
-                                </div>
-                                <div class="mt-2">
-                                    <span class="badge bg-info">18 terminées</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-3 col-sm-6">
-                        <div class="card card-hover border-info stat-card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <h6 class="card-title text-muted">LITS DISPONIBLES</h6>
-                                        <h3 class="text-info">12</h3>
-                                    </div>
-                                    <div class="align-self-center">
-                                        <i class="fas fa-bed fa-2x text-info"></i>
-                                    </div>
-                                </div>
-                                <div class="mt-2">
-                                    <span class="badge bg-warning">3 en nettoyage</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row g-4">
-                    <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                                <h5 class="mb-0"><i class="fas fa-list me-2"></i>Patients à Voir Aujourd'hui</h5>
-                                <button class="btn btn-sm btn-light" onclick="showSection('patients')">
-                                    Voir tout
-                                </button>
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0"><i class="fas fa-calendar-day me-2"></i>Planning du Jour</h5>
                             </div>
                             <div class="card-body">
-                                <div class="list-group list-group-flush">
-                                    <div class="list-group-item d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h6 class="mb-1">Marie Martin</h6>
-                                            <small class="text-muted">Consultation de suivi - Cardiologie - 09:00</small>
+                                <div class="appointment-card card border-primary">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">Marie Martin</h6>
+                                                <p class="mb-1 text-muted">Consultation de suivi - Cardiologie</p>
+                                                <small class="text-muted"><i class="fas fa-clock me-1"></i>09:00 - 09:30</small>
+                                            </div>
+                                            <span class="badge bg-warning">En attente</span>
                                         </div>
-                                        <span class="badge bg-warning">En attente</span>
-                                    </div>
-                                    <div class="list-group-item d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h6 class="mb-1">Pierre Durand</h6>
-                                            <small class="text-muted">Visite post-opératoire - Chirurgie - 10:30</small>
-                                        </div>
-                                        <span class="badge bg-success">Confirmé</span>
-                                    </div>
-                                    <div class="list-group-item d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h6 class="mb-1">Sophie Bernard</h6>
-                                            <small class="text-muted">Nouvelle consultation - Pédiatrie - 14:00</small>
-                                        </div>
-                                        <span class="badge bg-primary">Programmé</span>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card mt-4">
-                            <div class="card-header bg-warning text-dark">
-                                <h5 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i>Alertes Urgentes</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="alert alert-danger">
-                                    <i class="fas fa-heartbeat me-2"></i>
-                                    <strong>Résultats critiques</strong> - Patient Jean Dupont - Créatinine élevée
-                                    <button class="btn btn-sm btn-outline-danger float-end" onclick="viewPatientDetails(1)">Voir</button>
+                                
+                                <div class="appointment-card card border-success">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">Pierre Durand</h6>
+                                                <p class="mb-1 text-muted">Visite post-opératoire</p>
+                                                <small class="text-muted"><i class="fas fa-clock me-1"></i>10:30 - 11:00</small>
+                                            </div>
+                                            <span class="badge bg-success">Confirmé</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="alert alert-warning">
-                                    <i class="fas fa-pills me-2"></i>
-                                    <strong>Allergie détectée</strong> - Patient Marie Martin - Pénicilline
-                                    <button class="btn btn-sm btn-outline-warning float-end" onclick="viewPatientDetails(2)">Voir</button>
-                                </div>
-                                <div class="alert alert-info">
-                                    <i class="fas fa-bed me-2"></i>
-                                    <strong>Lit disponible</strong> - Chambre 204 prête pour nouveau patient
-                                    <button class="btn btn-sm btn-outline-info float-end" onclick="showSection('beds')">Voir</button>
+                                
+                                <div class="appointment-card card border-info">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">Sophie Bernard</h6>
+                                                <p class="mb-1 text-muted">Nouvelle consultation - Pédiatrie</p>
+                                                <small class="text-muted"><i class="fas fa-clock me-1"></i>14:00 - 14:45</small>
+                                            </div>
+                                            <span class="badge bg-info">Programmé</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="col-lg-6">
+                    <div class="col-md-4">
                         <div class="card">
                             <div class="card-header bg-success text-white">
-                                <h5 class="mb-0"><i class="fas fa-chart-line me-2"></i>Activité Hospitalière</h5>
+                                <h5 class="mb-0"><i class="fas fa-chart-pie me-2"></i>Statistiques</h5>
                             </div>
                             <div class="card-body">
-                                <div class="row text-center">
-                                    <div class="col-4">
-                                        <h4 class="text-primary">156</h4>
-                                        <small class="text-muted">Patients ce mois</small>
-                                    </div>
-                                    <div class="col-4">
-                                        <h4 class="text-success">89%</h4>
-                                        <small class="text-muted">Taux d'occupation</small>
-                                    </div>
-                                    <div class="col-4">
-                                        <h4 class="text-warning">2.3j</h4>
-                                        <small class="text-muted">Durée moyenne séjour</small>
-                                    </div>
+                                <div class="text-center">
+                                    <h4 class="text-primary">24</h4>
+                                    <p class="text-muted">RDV aujourd'hui</p>
                                 </div>
                                 <hr>
-                                <div style="height: 150px; background: #f8f9fa; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #6c757d;">
-                                    <i class="fas fa-chart-bar fa-2x me-2"></i>
-                                    Graphique d'activité du mois
+                                <div class="text-center">
+                                    <h4 class="text-success">18</h4>
+                                    <p class="text-muted">RDV confirmés</p>
                                 </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card mt-4">
-                            <div class="card-header bg-info text-white">
-                                <h5 class="mb-0"><i class="fas fa-bolt me-2"></i>Accès Rapide</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="row g-2">
-                                    <div class="col-6">
-                                        <button class="btn btn-outline-primary w-100" onclick="showSection('patients')">
-                                            <i class="fas fa-user-injured me-1"></i> Dossier Patient
-                                        </button>
-                                    </div>
-                                    <div class="col-6">
-                                        <button class="btn btn-outline-success w-100" onclick="newPrescription()">
-                                            <i class="fas fa-prescription me-1"></i> Prescrire
-                                        </button>
-                                    </div>
-                                    <div class="col-6">
-                                        <button class="btn btn-outline-warning w-100" onclick="showSection('appointments')">
-                                            <i class="fas fa-calendar-plus me-1"></i> Rendez-vous
-                                        </button>
-                                    </div>
-                                    <div class="col-6">
-                                        <button class="btn btn-outline-info w-100" onclick="showSection('emergency')">
-                                            <i class="fas fa-ambulance me-1"></i> Urgences
-                                        </button>
-                                    </div>
+                                <hr>
+                                <div class="text-center">
+                                    <h4 class="text-warning">6</h4>
+                                    <p class="text-muted">RDV en attente</p>
                                 </div>
                             </div>
                         </div>
@@ -318,11 +187,14 @@
         </div>
     </div>
 
+
+
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    
        <script>
         // Variables globales
         let currentUser = null;
@@ -516,8 +388,5 @@
             });
         });
     </script>
- 
-    
-    
 </body>
 </html>
